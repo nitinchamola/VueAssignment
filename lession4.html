@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <script src='https://unpkg.com/vue@3'></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    body, html  {
+        top: 50%;
+        left: 50%;
+        box-sizing: border-box;
+        position: absolute;
+    }
+</style>
+<body>
+    <div id="app">
+        <app-button> Submit </app-button>
+        <app-button> Don't Submit </app-button>
+    </div>
+
+    <script>
+       
+        let app = {
+            components: {
+                'app-button': {
+                    template: `
+                        <button class="bg-gray-200 hover:bg-gray-400 border rounded px-5 py-2 disabled:cursor-not-allowed" :disabled="processing">
+                            <slot />    
+                        </button> 
+                    `,
+
+                    data() {
+                        return {
+                            processing: true
+                        }
+                    }
+                }
+            },
+
+           
+        }
+
+        Vue.createApp(app).mount('#app');
+       
+    </script>
+</body>
+</html>

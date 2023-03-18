@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <script src='https://unpkg.com/vue@3'></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    
+    body, html  {
+        box-sizing: border-box;
+        margin-top: 5%;
+    }
+
+</style>
+<body class="h-full grid place-items-center bg-gray-800 text-white">
+    <div id="app"></div>
+
+    <script type="module">
+       
+        import App from "./js/components/FirstAssignment/App.js";
+
+        Vue.createApp(App).mount('#app');
+       
+    </script>
+
+</body>
+</html>
