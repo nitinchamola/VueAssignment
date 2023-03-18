@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <script src='https://unpkg.com/vue@3'></script>
+</head>
+
+<style>
+    .text-red {
+        color: red;
+    }
+
+    .text-green {
+        color: green;
+    }
+
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        display: grid;
+        place-items: center;
+        padding: 10px;
+    }
+</style>
+<body>
+    <div id="app">
+       <!-- <button v-bind:class="buttonClass">Click Me</button> -->
+       <!-- <button :class="buttonClass" v-on:click="toggle">Click Me</button> -->
+       
+       <!-- v-bind:class to bind value to the attribute. Short hand for v-bind is :class --> 
+       <!-- v-on:click to add event. Short hand for v-on is "@" with any event. --> 
+
+       <button :class="active ? 'text-green' : 'text-red'" @click="toggle">Click Me</button> 
+    </div>
+
+    <script>
+       
+       Vue.createApp({
+            data() {
+                return {
+                    // buttonClass: "text-red"
+                    active: false
+                }
+            },
+
+            methods: {
+                toggle() {
+                    // this.buttonClass = 'text-green'
+                    this.active = ! this.active
+                }
+            }
+       }).mount('#app')
+
+       
+    </script>
+</body>
+</html>

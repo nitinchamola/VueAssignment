@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <script src='https://unpkg.com/vue@3'></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    body, html  {
+        top: 50%;
+        left: 50%;
+        box-sizing: border-box;
+        position: absolute;
+    }
+</style>
+<body class="h-full grid place-items-center">
+    <div id="app">
+        
+        <section v-show="inProgressAssignment.length">
+            <h2 class="font-bold mb-2">In Progress</h2>
+
+            <ul>
+                <li v-for="assignment in inProgressAssignment" :key="assignment.id">
+                    <label>
+                        {{ assignment.name }}
+
+                        <input type="checkbox" v-model="assignment.complete">
+                    </label>
+                
+                </li>
+                
+                <!-- <li> First Assignment <input type="checkbox"> </li>
+                <li> Second Assignment <input type="checkbox"> </li>
+                <li> Third Assignment <input type="checkbox"> </li> -->
+                <!-- <pre>
+                    {{ assignments }}
+                </pre> -->
+                
+            </ul>
+
+            
+        </section>
+
+        <section class="mt-10" v-show="completedAssignment.length">
+            <h2 class="font-bold mb-2">Completed</h2>
+
+            <ul>
+                <li v-for="assignment in completedAssignment" :key="assignment.id">
+                    <label>
+                        {{ assignment.name }}
+
+                        <input type="checkbox" v-model="assignment.complete">
+                    </label>
+                
+                </li>
+                
+            </ul>
+
+            
+        </section>
+    </div>
+
+    <script>
+        
+        let app = {
+
+            data() {
+                return {
+
+                    assignments: [
+                        {name: "First Assignment", complete: false, id: 1},
+                        {name: "Second Assignment", complete: false, id: 2},
+                        {name: "Third Assignment", complete: false, id: 3}
+                    ],
+
+                }
+            },
+
+            computed: {
+                inProgressAssignment() {
+                    return this.assignments.filter(a => ! a.complete)
+                },
+
+                completedAssignment() {
+                    return  this.assignments.filter(a => a.complete)
+                }
+            }
+            
+        }
+
+        Vue.createApp(app).mount('#app')
+       
+    </script>
+</body>
+</html>

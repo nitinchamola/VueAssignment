@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <script src='https://unpkg.com/vue@3'></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    @keyframes spinner {
+        to {transform: rotate(360deg);}
+    }
+    
+    body, html  {
+        top: 50%;
+        left: 50%;
+        box-sizing: border-box;
+        position: absolute;
+    }
+
+    .is-loading {
+        color: transparent;
+    }
+    .is-loading:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+        margin-left: -10px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        border-top-color: #000;
+        animation: spinner .6s linear infinite;
+    }
+</style>
+<body>
+    <div id="app">
+        <!-- <app-button category="primary"> Submit </app-button> -->
+
+         <!-- Query: why processing have : and not the category Ref file AppButton.js-->
+        <app-button :processing="false" category="muted"> Submit </app-button>
+    </div>
+
+    <script type="module">
+       
+        import App from "./js/components/App.js";
+
+        Vue.createApp(App).mount('#app');
+       
+    </script>
+
+</body>
+</html>
